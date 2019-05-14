@@ -46,7 +46,7 @@ Displays events happening today by passing ticket master's widget the date from 
 ### Functionality ###
 On page load, the widget is immediately rendered by a call to ticket master's widget script. That means the widget is only rendered once, so when the user searches again for another city, a new widget wasn't being generated. To fix this, we grabbed ticket master function that renders the widget from their github page, and made our own function to render the widget when the user inputs their city again. 
 
-### What was learned: ###
+### What was learned:
 The ticket master widget and API don't have direct crossover, meaning the widget couldn't be rendered directly from our API call.
 
 
@@ -78,10 +78,10 @@ Entry Point -  renderTMEvents(startDate, startTime, endDate, endTime, city, stat
     radius (optional) - search for a distance around a point to discover musice events
     maxEvents(optional) - limit the number of events returned from Ticket Master
 
-### Functionality: ### 
+### Functionality:
 The entry point (renderTMEvents) does minimal validation of input parameters prior to proceeding. A TM music discovery query string is then created based on renderTMEvents inputs. An AJAX call is then made to TM to obtain events based on our requested parameters. Once the response is returned, our renderTMEvents calls an internal function called createEvent(response), passing it the TM response returned from the AJAX call. The createEvent() is responsible for looping through all TM events, an extracting information from each event into ArtistObject. Once the ArtistObject is extracted, ArtistObject is thten pushed into the TMEvents array. Once all events have been processed, TMEvent object is returned to the calling function.     
 
-### What was learned
+### What was learned:
 Data returned from TM isn't consistent so try/catch exception handling had to be added. For some events , multiple artists were listed in the venue name in comma separated format. Code was added to parse this particular scenario. Warm up bands 
 were listed for some artists but not others. This is the most difficult aspect of using the TM discovery API(s).
 
@@ -102,7 +102,7 @@ The code is broken into six main functions:
 * makeArtistNameWorkForSpotify - takes an array and returns an array endcoded as URI
 * changeSpotifyWidget - function that adds the playlist id to the spotify widget so it renders the new playlist.
 
-### What was learned:###
+### What was learned:
 Spotify's auth scoping was incredibly important. We needed to be able to access a user's playlist, which was a different scope than just grabbing their userid, so the request to the user needed to explictly ask for that consent. 
 
 # Takeaway
