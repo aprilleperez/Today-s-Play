@@ -81,7 +81,7 @@ Entry Point -  renderTMEvents(startDate, startTime, endDate, endTime, city, stat
 ### Functionality: ### 
 The entry point (renderTMEvents) does minimal validation of input parameters prior to proceeding. A TM music discovery query string is then created based on renderTMEvents inputs. An AJAX call is then made to TM to obtain events based on our requested parameters. Once the response is returned, our renderTMEvents calls an internal function called createEvent(response), passing it the TM response returned from the AJAX call. The createEvent() is responsible for looping through all TM events, an extracting information from each event into ArtistObject. Once the ArtistObject is extracted, ArtistObject is thten pushed into the TMEvents array. Once all events have been processed, TMEvent object is returned to the calling function.     
 
-### What was learned:###
+### What was learned
 Data returned from TM isn't consistent so try/catch exception handling had to be added. For some events , multiple artists were listed in the venue name in comma separated format. Code was added to parse this particular scenario. Warm up bands 
 were listed for some artists but not others. This is the most difficult aspect of using the TM discovery API(s).
 
